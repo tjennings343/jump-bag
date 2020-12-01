@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20201201003534) do
     t.string  "bag_name"
     t.string  "item"
     t.integer "item_quantity"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
   end
 
 end
