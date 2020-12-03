@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
     post "/users/signup" do 
         @user = User.create(:name => params[:name], :username => params[:username], :password => params[:password])
+        binding.pry
+        
     end
 
 
