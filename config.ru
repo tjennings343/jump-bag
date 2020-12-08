@@ -5,5 +5,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use UsersController
-run ApplicationController
 use BagsController
+run ApplicationController
+

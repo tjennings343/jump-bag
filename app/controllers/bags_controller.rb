@@ -5,9 +5,9 @@ class BagsController < ApplicationController
     erb :"/bags/index.html"
   end
 
-  # GET: /bags/new
+  # GET: /bags/new create a new bag
   get "/bags/new" do
-    erb :"/bags/new.html"
+    erb :"/bags/new"
   end
 
   # POST: /bags
