@@ -11,8 +11,6 @@ class UsersController < ApplicationController
             redirect "users/#{@user.id}"
         else
             redirect "/users/signup"
-            # log in
-        # redirect to user page
         end
         
     end

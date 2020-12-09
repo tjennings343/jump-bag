@@ -11,16 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201203182150) do
+ActiveRecord::Schema.define(version: 20201201003534) do
 
   create_table "bags", force: :cascade do |t|
     t.string  "bag_name"
+    t.string  "bag_contents"
     t.integer "user_id"
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.string  "name"
-    t.integer "bag_id"
   end
 
   create_table "users", force: :cascade do |t|

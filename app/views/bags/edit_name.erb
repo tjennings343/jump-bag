@@ -1,0 +1,7 @@
+<h1>Rename Your Bag</h1>
+<form action="/bags/<%=@bag.id%>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="bag_name">Bag Name:</label>
+    <input type="text" name="bag_name" value="<%=@bag.bag_name%>">
+    <input type="submit" value="Change Name">
+</form>
