@@ -1,9 +1,13 @@
 <h1><%=@bag.bag_name%></h1>
+<p><%=@bag.bag_contents%></p>
+<% if current_user == @bag.user%>
+<a href="/bags/<%=@bag.id%>/edit">Edit Bag</a>
+<br><br>
+<form action="/bags/<%=@bag.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Bag">
+</form>
+<%end%>
 
-<a href="/bags/<%=@bag.id%>/add_item">Add Items</a>
-<a href=>
-
-<a href="/bags/<%=@bag.id%>/edit_name">Change Name</a>
-<a href=>
 
 

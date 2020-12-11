@@ -1,0 +1,11 @@
+<h1><%=current_user.name.capitalize%>'s Bags</h1>
+
+<%@bag.each do |bags|%>
+<h4><a href="/bags/<%=bags.id%>"><%=bags.bag_name%></a></h4>
+<br><br>
+<p><%=bags.bag_contents%></p>
+<br><br>
+<%end%>
+
+
+

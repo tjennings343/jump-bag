@@ -1,4 +1,6 @@
 <h1>Hello <%=@user.name.capitalize%></h1>
-    <a href="/logout">Log Out</a>
-    <a href="/bags">Bags</a>
     <a href="/bags/new">New Bag</a>
+    <br><br>
+    <%@bags.each do |bag|%>
+    <a href="/bags/<%=bag.id%>"><%=bag.bag_name%></a>
+    <%end%>

@@ -1,2 +1,13 @@
-<h1>This is the Model's index page.</h1>
+<h1>All Bags</h1>
+
+<%@bags.each do |bag|%>
+<h4><a href="/bags/<%=bag.id%>"><%=bag.bag_name%></a></h4>
+<br><br>
+<p><%=bag.bag_contents%></p>
+<p>Created By <%=bag.user.name%></p>
+<br><br>
+<%end%>
+
+
+
  

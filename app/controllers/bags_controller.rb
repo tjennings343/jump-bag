@@ -1,7 +1,9 @@
 class BagsController < ApplicationController
 
+  
   get "/bags" do
-    erb :"/bags/index.html"
+    @bags = Bag.all
+    erb :"/bags/index"
   end
 
 
@@ -14,8 +16,8 @@ class BagsController < ApplicationController
     if !logged_in?
       redirect "/"
     end
-    if params[:content] != ""
-      @bag = Bag.create(:bag_name => params[:bag_name], :user_id => current_user.id)
+    @bag = Bag.create(:bag_name => params[:bag_name], :bag_contents => params[:bag_contents], :user_id => current_user.id)
+    if @bag.save
       redirect "/bags/#{@bag.id}"
     else
       redirect "/bags/new"
@@ -29,11 +31,11 @@ class BagsController < ApplicationController
    end
 
 
-   get "/bags/:id/edit_name" do
+   get "/bags/:id/edit" do
     @bag = Bag.find(params[:id])
     if logged_in?
       if @bag.user == current_user
-        erb :"/bags/edit_name"
+        erb :"/bags/edit"
         else
         redirect "users/#{current_user.id}"
       end
@@ -47,7 +49,7 @@ class BagsController < ApplicationController
     @bag = Bag.find(params[:id])
     if logged_in?
       if @bag.user == current_user
-        @bag.update(bag_name: params[:bag_name])
+        @bag.update(bag_name: params[:bag_name], bag_contents: params[:bag_contents])
         redirect "/bags/#{@bag.id}"
       else
         redirect "users/#{current_user.id}"
@@ -55,16 +57,22 @@ class BagsController < ApplicationController
     else
       redirect "/"
     end
-    
   end
 
 
-   # get "/bags/:id/add_item" do
-  #   erb :"/bags/add_items"
-  # end
+  delete "/bags/:id" do
+    bag = Bag.find(params[:id])
+    if bag.user == current_user
+      bag.delete
+    end
+    redirect "/bags"
+  end
 
-  # # DELETE: /bags/5/delete
-  # delete "/bags/:id/delete" do
-  #   redirect "/bags"
-  # end
+  get "/my_bags" do
+    @bag = current_user.bags
+    erb :"/bags/my_bags"
+    
+  end
+  
+  
 end
