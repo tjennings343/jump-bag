@@ -2,12 +2,18 @@ class BagsController < ApplicationController
 
   
   get "/bags" do
+    if !logged_in?
+      redirect "/"
+    end
     @bags = Bag.all
     erb :"/bags/index"
   end
 
 
   get "/bags/new" do
+    if !logged_in?
+      redirect "/"
+    end
     erb :"/bags/new"
   end
 
@@ -26,6 +32,9 @@ class BagsController < ApplicationController
 
 
   get "/bags/:id" do
+    if !logged_in?
+      redirect "/"
+    end
     @bag = Bag.find(params[:id])
     erb :"/bags/show"
    end
@@ -69,6 +78,9 @@ class BagsController < ApplicationController
   end
 
   get "/my_bags" do
+    if !logged_in?
+      redirect "/"
+    end
     @bag = current_user.bags
     erb :"/bags/my_bags"
     
